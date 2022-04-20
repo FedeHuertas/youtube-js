@@ -11,63 +11,196 @@
   <h1>Ejercicios de Programación en JavaScript</h1>
   <script>
     /* 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFunción("Hola Mundo") devolverá 10 */
-
+    function contarCaracteres(cadena) {
+      if (typeof cadena == "string") {
+        return cadena.length
+      }
+      else {
+        return "Debe ingresar una cadena de texto"
+      }
+    }
 
     /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
-
+    function truncarCadena(cadena, caracteres) {
+      if (typeof cadena == "string") {
+        return cadena.slice(0, caracteres)
+      }
+      else {
+        return "Debe ingresar una cadena de texto"
+      }
+    }
 
 
     /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
      miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
-
+     function dividirCadena(cadena, caracter) {
+      if (typeof cadena == "string") {
+        return cadena.split(caracter)
+      }
+      else {
+        return "Debe ingresar una cadena de texto"
+      }
+    }
 
 
     /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
-
+    function repetir(cadena, veces) {
+      if (typeof cadena == "string") {
+        return cadena.repeat(veces)
+      }
+      else {
+        return "Debe ingresar una cadena de texto"
+      }
+    }
 
 
     /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
-
+    function invertirCadena(cadena) {
+      if (typeof cadena == "string") {
+        cadena = cadena.split("")
+        cadena = cadena.reverse()
+        cadena = cadena.join("")
+        return cadena
+      }
+      else {
+        return "Debe ingresar una cadena de texto"
+      }
+    }
 
 
     /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
-
+    function contarPalabra(texto, palabra) {
+      let contador = 0
+      if (typeof texto == "string" && typeof palabra == "string") {
+        array = texto.split(" ")
+        for (i=0; i<array.length; i++) {
+          if (array[i]===palabra){
+            contador++
+          }
+        }
+        return contador
+      }
+      else {
+        return "Los parámetros deben ser cadenas de texto"
+      }
+    }
 
 
     /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
-
+    function esPalindromo(cadena) {
+      if (typeof cadena == "string") {
+        if (cadena === invertirCadena(cadena)) {
+          return true
+        }
+        else {
+          return false
+        }
+      }
+      else {
+        return "Debe ingresar una cadena de texto"
+      }
+    }
 
 
     /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
-
+    function eliminarPatron(cadena, patron) {
+      if (typeof cadena == "string") {
+        return cadena.replaceAll(patron, "")
+      }
+      else {
+        return "Los parámetros deben ser cadenas de texto"
+      }
+    }
 
 
     /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
-
+    function aleatorio() {
+      return Math.floor(Math.random()*(600-501)+501)
+    }
 
 
     /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
-
+    function esCapicua(numero) {
+      if (typeof numero === "number") {
+        return esPalindromo(numero.toString())
+      }
+      else {
+        return "Debe ingresar un valor numérico"
+      }
+    }
 
 
     /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
-
+    function factorial(numero) {
+      let n = 1
+      if (typeof numero === "number") {
+        for (i=1; i<=numero; i++) {
+          n = n*i
+        }
+        return n
+      }
+      else {
+        return "Debe ingresar un valor numérico"
+      }
+    }
 
 
     /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
-
+    function esPrimo(numero) {
+      if (typeof numero === "number") {
+        for (i=2; i<numero; i++) {
+          if (numero%i === 0) {
+            return false
+          }
+        }
+        return true
+      }
+      else {
+        return "Debe ingresar un número"
+      }
+    }
 
 
     /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
-
+    function esPar(numero) {
+      if (typeof numero === "number") {
+        if (numero%2 === 0) {
+          return "par"
+        }
+        else {
+          return "impar"
+        }
+      }
+      else {
+        return "Debe ingresar un número"
+      }
+    }
 
 
     /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
-
+    function convertirTemperatura(numero, grados) {
+      if (grados === "C" || grados === "c") {
+        return (numero * 1.8) + 32 + " °F"
+      }
+      else if (grados === "F" || grados === "f") {
+        return (numero - 32) / 1.8 + " °C"
+      }
+    }
 
 
     /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
-
+    function binarioDecimal (numero, base) {
+      if (base === 2) {
+        let funcionAux = num => Number(num)
+        let arreglo = Array.from(String(numero), funcionAux)
+        let sum = 0
+        arreglo = arreglo.reverse()
+        for (i=0; i<arreglo.length; i++) {
+          sum = ((2**i)*arreglo[i]) + sum
+        }
+        return sum
+      }
+    }
 
 
     /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
