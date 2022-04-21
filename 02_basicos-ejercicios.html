@@ -191,20 +191,30 @@
     /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
     function binarioDecimal (numero, base) {
       if (base === 2) {
-        let funcionAux = num => Number(num)
-        let arreglo = Array.from(String(numero), funcionAux)
         let sum = 0
-        arreglo = arreglo.reverse()
+        let arreglo = numero.toString().split("").reverse()
+        let resto = 0
         for (i=0; i<arreglo.length; i++) {
+          arreglo[i] = Number(arreglo[i])
           sum = ((2**i)*arreglo[i]) + sum
         }
-        return sum
+        return sum + " base 10"
+      }
+      else if (base === 10) {
+        let aux = []
+        while (numero > 0) {
+          resto = numero%2
+          numero = Math.floor(numero/2)
+          aux.unshift(resto)
+        }
+        return Number(aux.join("")) + " base 2"
       }
     }
 
 
-    /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
 
+    /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
+    
 
 
     /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
